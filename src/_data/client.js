@@ -1,8 +1,8 @@
 module.exports = {
     name: "Tim's Professional Painting, Inc.",
-    email: "info@timspropainting.com",
-    phoneForTel: "6307074126",
-    phoneFormatted: "(630) 707-4126",
+    email: "[EMAIL_ADDRESS]",
+    phoneForTel: "6307893443",
+    phoneFormatted: "(630) 789-3443",
     address: {
         lineOne: "",
         lineTwo: "",
