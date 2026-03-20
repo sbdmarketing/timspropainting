@@ -1,0 +1,283 @@
+---
+title: "Contact | HomeWorks - Home Remodeling Fremont, CA"
+description: "Contact HomeWorks for your home remodeling project in Fremont, CA. Free estimates, licensed contractors, and expert kitchen & bathroom renovations."
+preloadImg: "/assets/images/cabinets2.jpg"
+permalink: "contact/"
+eleventyNavigation:
+    key: Contact Us
+    order: 600
+    hideOnDesktop: true
+---
+
+{% extends "layouts/base.html" %}
+
+{% block head %}
+    <link rel="stylesheet" href="/assets/css/contact.css" />
+{% endblock %}
+
+{% block body %}
+    <!-- ============================================ -->
+    <!--                    LANDING                   -->
+    <!-- ============================================ -->
+
+    <section id="int-hero">
+        <h1 id="home-h">Contact Us</h1>
+        <picture>
+            <source
+                media="(max-width: 600px)"
+                srcset="/assets/images/banner-sm.webp"
+            />
+            <source
+                media="(min-width: 601px)"
+                srcset="/assets/images/banner.webp"
+            />
+            <img
+                aria-hidden="true"
+                decoding="async"
+                src="/assets/images/banner.webp"
+                alt="HomeWorks contact"
+                loading="eager"
+                width="2500"
+                height="1667"
+            />
+        </picture>
+    </section>
+
+    <!-- ============================================ -->
+    <!--                Contact Form                  -->
+    <!-- ============================================ -->
+
+    <section id="cs-contact">
+        <div class="cs-container">
+            <form id="cs-form" name="Contact Form" method="post">
+                <div class="cs-content">
+                    <span class="cs-topper">Contact</span>
+                    <h2 class="cs-title">Ready to Transform Your Home?</h2>
+                    <p class="cs-text">
+                        Get started with your home remodeling project today!
+                        Fill out the form below and we'll contact you within 24
+                        hours to schedule your free consultation and estimate.
+                        Our team is ready to discuss your vision and provide
+                        expert guidance for your kitchen, bathroom, or whole
+                        home renovation.
+                    </p>
+                </div>
+                <label>
+                    Name
+                    <input
+                        required
+                        type="text"
+                        id="name"
+                        name="name"
+                        placeholder="Name"
+                    />
+                </label>
+                <label>
+                    Email
+                    <input
+                        required
+                        type="text"
+                        id="email"
+                        name="email"
+                        placeholder="Email"
+                    />
+                </label>
+                <label>
+                    Phone
+                    <input
+                        required
+                        type="text"
+                        id="phone"
+                        name="phone"
+                        placeholder="Phone"
+                    />
+                </label>
+                <label>
+                    How Did You Find Us
+                    <input
+                        type="text"
+                        id="find"
+                        name="find-us"
+                        placeholder="How did you find us?"
+                    />
+                </label>
+                <label class="cs-label-message">
+                    Message
+                    <textarea
+                        required
+                        name="Message"
+                        id="message"
+                        placeholder="Write message..."
+                    ></textarea>
+                </label>
+                <button class="cs-button-solid" type="submit">
+                    Submit Message
+                </button>
+            </form>
+            <div class="cs-right-section">
+                <!--Email-->
+                <span class="cs-header">Email</span>
+                <a class="cs-link" href="mailto:{{ client.email }}"
+                    >{{ client.email }}</a
+                >
+                <!--Phone-->
+                <span class="cs-header">Phone</span>
+                <a class="cs-link" href="tel:{{ client.phoneForTel }}"
+                    >{{ client.phoneFormatted }}</a
+                >
+                <!--Address-->
+                <span class="cs-header">Address</span>
+                <a class="cs-link" href="{{ client.address.mapLink }}">
+                    {{ client.address.lineOne }},
+                    <br />
+                    {{ client.address.lineTwo }},
+                    <br />
+                    <span class="cs-block">
+                        {{ client.address.city }}
+                        {{ client.address.state }}
+                        {{ client.address.zip }}
+                    </span>
+                </a>
+
+                <!-- Background Image-->
+                <picture class="cs-bg-picture">
+                    <source
+                        media="(min-width: 601px)"
+                        srcset="/assets/images/skyscraper.jpg"
+                    />
+                    <img
+                        aria-hidden="true"
+                        decoding="async"
+                        src="/assets/images/skyscraper.jpg"
+                        alt="building"
+                        loading="lazy"
+                        width="2500"
+                        height="1667"
+                    />
+                </picture>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!--                    FAQ                       -->
+    <!-- ============================================ -->
+
+    <section id="faq-1108">
+        <div class="cs-container">
+            <div class="cs-content">
+                <span class="cs-topper">FAQ's</span>
+                <h2 class="cs-title">Frequently Asked Questions</h2>
+                <picture class="cs-picture">
+                    <!--Mobile Image-->
+                    <source
+                        media="(max-width: 600px)"
+                        srcset="
+                            https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/MISC/mechanic23.jpg
+                        "
+                    />
+                    <!--Tablet and above Image-->
+                    <source
+                        media="(min-width: 601px)"
+                        srcset="
+                            https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/MISC/mechanic23.jpg
+                        "
+                    />
+                    <img
+                        loading="lazy"
+                        decoding="async"
+                        src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/MISC/mechanic23.jpg"
+                        alt="home remodeling consultation"
+                        width="522"
+                        height="400"
+                    />
+                </picture>
+            </div>
+            <div class="cs-flex-group">
+                <ul class="cs-faq-group">
+                    <!-- Active class added as default -->
+                    <li class="cs-faq-item active">
+                        <button class="cs-button">
+                            <span class="cs-button-text">
+                                How long does a typical home remodeling project
+                                take?
+                            </span>
+                        </button>
+                        <p class="cs-item-p">
+                            Project timelines vary depending on scope and
+                            complexity. Kitchen remodels typically take 4-6
+                            weeks, bathroom renovations 2-3 weeks, and whole
+                            home projects 3-6 months. We provide detailed
+                            timelines during your consultation and keep you
+                            updated throughout the process.
+                        </p>
+                    </li>
+                    <li class="cs-faq-item">
+                        <button class="cs-button">
+                            <span class="cs-button-text">
+                                Do you provide free estimates?
+                            </span>
+                        </button>
+                        <p class="cs-item-p">
+                            Yes! We provide completely free, no-obligation
+                            estimates for all home remodeling projects. Our team
+                            will visit your home, discuss your vision, take
+                            measurements, and provide a detailed written
+                            estimate within 48 hours.
+                        </p>
+                    </li>
+                    <li class="cs-faq-item">
+                        <button class="cs-button">
+                            <span class="cs-button-text">
+                                Are you licensed and insured?
+                            </span>
+                        </button>
+                        <p class="cs-item-p">
+                            Absolutely! HomeWorks is fully licensed, bonded, and
+                            insured. We carry comprehensive liability insurance
+                            and workers' compensation coverage. All permits are
+                            handled by our team to ensure your project meets
+                            local building codes.
+                        </p>
+                    </li>
+                    <li class="cs-faq-item">
+                        <button class="cs-button">
+                            <span class="cs-button-text">
+                                What areas do you serve?
+                            </span>
+                        </button>
+                        <p class="cs-item-p">
+                            We proudly serve Fremont and surrounding Bay Area
+                            communities including Newark, Union City, Milpitas,
+                            San Jose, Hayward, and Castro Valley. Contact us to
+                            confirm service availability in your specific area.
+                        </p>
+                    </li>
+                    <li class="cs-faq-item">
+                        <button class="cs-button">
+                            <span class="cs-button-text">
+                                Do you offer financing options?
+                            </span>
+                        </button>
+                        <p class="cs-item-p">
+                            Yes, we offer flexible financing options to help
+                            make your dream remodel affordable. We work with
+                            trusted lending partners to provide competitive
+                            rates and terms that fit your budget. Ask about our
+                            financing options during your consultation.
+                        </p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <script>
+        const faqItems = Array.from(document.querySelectorAll(".cs-faq-item"));
+        for (const item of faqItems) {
+            const onClick = () => {
+                item.classList.toggle("active");
+            };
+            item.addEventListener("click", onClick);
+        }
+    </script>
+{% endblock %}

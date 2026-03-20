@@ -1,0 +1,450 @@
+---
+title: "Tim's Professional Painting, Inc. | Professional Painting Services | West Chicago, IL"
+description: "Tim's Professional Painting, Inc. offers premium interior and exterior painting services in West Chicago, IL. Call (630) 707-4126."
+preloadImg: ""
+permalink: "/"
+tags: "sitemap"
+eleventyNavigation:
+key: Home
+order: 100
+---
+
+{% extends "layouts/base.html" %}
+
+{% block head %}
+<link rel="stylesheet" href="/assets/css/local.css" />
+<link rel="stylesheet" href="/assets/css/critical.css" />
+
+<!-- Script for Netlify Identity -->
+<script defer src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<script defer>
+    if (window.netlifyIdentity) {
+        window.netlifyIdentity.on("init", (user) => {
+            if (!user) {
+                window.netlifyIdentity.on("login", () => {
+                    document.location.href = "/admin/";
+                });
+            }
+        });
+    }
+</script>
+
+<!-- JSON Schema Markup -->
+<!-- prettier-ignore-start -->
+<script type="application/ld+json">
+        {
+            "@context": "http://schema.org",
+            "@type": "LocalBusiness",
+            "name": "{{ client.name }}",
+            {% if preloadImg %}"image": "{{ preloadImg }}",{% endif %}
+            {% if client.phoneFormatted %}"telephone": "{{ client.phoneFormatted }}",{% endif %}
+            {% if client.email %}"email": "{{ client.email }}",{% endif %}
+            {% if client.address %}
+                "address": {
+                    "@type": "PostalAddress"{% if client.address.lineOne %},
+                        "streetAddress": "{{ client.address.lineOne }}{% if client.address.lineTwo %}, {{ client.address.lineTwo }}{% endif %}"
+                    {% endif %}
+                    {% if client.address.city %},
+                        "addressLocality": "{{ client.address.city }}"
+                    {% endif %}
+                    {% if client.address.state %},
+                        "addressRegion": "{{ client.address.state }}"
+                    {% endif %}
+                    {% if client.address.zip %},
+                        "postalCode": "{{ client.address.zip }}"
+                    {% endif %}
+                    {% if client.address.country %},
+                        "addressCountry": "{{ client.address.country }}"
+                    {% endif %}
+                },
+            {% endif %}
+            {% if client.domain and page.url %}"url": "{{ client.domain }}{{ page.url }}",{% endif %}
+            {% if client.socials %}
+                "sameAs": [{% for platform, url in client.socials %}
+                        {% if not loop.first %},{% endif %}
+                        "{{ url }}"
+                    {% endfor %}]
+            {% endif %}
+        }
+    </script>
+<!-- prettier-ignore-end -->
+{% endblock %}
+
+{% block body %}
+<!--We needed to pull from Google Fonts CDN to load in the cursive font. -->
+<!--Download the fonts from https://gwfh.mranftl.com/fonts and follow the steps to host it locally and remove these CDN links-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Mr+Dafoe&display=swap" rel="stylesheet" />
+
+<!-- ============================================ -->
+<!--                    Hero                      -->
+<!-- ============================================ -->
+
+<section id="hero-143">
+    <div class="cs-container">
+        <h1 class="cs-title">Ohana Cabinets & Design</h1>
+        <p class="cs-text">
+            Transforming your conceptual designs into stunning functional spaces. We specialize in commercial and
+            residential construction, office build-outs, and construction management in Clifton Park and surrounding
+            areas.
+        </p>
+        <a href="/contact/" class="cs-button-solid" aria-label="get a free estimate">Get a Free Quote</a>
+    </div>
+
+    <!-- Background Image -->
+    <picture class="cs-background">
+        <source media="(max-width: 600px)"
+            srcset="https://lh3.googleusercontent.com/p/AF1QipPZNg257iRs_5V3MJpnkd35rQ1FV-m7Jj7_d8kA=s1360-w1360-h1020-rw" />
+        <source media="(min-width: 601px)"
+            srcset="https://lh3.googleusercontent.com/p/AF1QipPZNg257iRs_5V3MJpnkd35rQ1FV-m7Jj7_d8kA=s1360-w1360-h1020-rw" />
+        <img loading="lazy" decoding="async"
+            src="https://lh3.googleusercontent.com/p/AF1QipPZNg257iRs_5V3MJpnkd35rQ1FV-m7Jj7_d8kA=s1360-w1360-h1020-rw"
+            alt="Tim's Professional Painting hero image" width="2250" height="1500" aria-hidden="true" />
+    </picture>
+</section>
+
+<!-- ============================================ -->
+<!--                   Services                   -->
+<!-- ============================================ -->
+
+<section id="h-services-143">
+    <ul class="cs-card-group">
+        <li class="cs-item">
+            <picture class="cs-icon">
+                <img loading="lazy" decoding="async" src="https://csimg.nyc3.digitaloceanspaces.com/Hero/toolbox.svg"
+                    alt="icon" width="52" height="52" aria-hidden="true" />
+            </picture>
+            <h2 class="cs-title">Cabinets & Countertops</h2>
+            <p class="cs-text">
+                Flawless interior painting services designed to transform and refresh any room.
+            </p>
+        </li>
+        <li class="cs-item">
+            <picture class="cs-icon">
+                <img loading="lazy" decoding="async" src="https://csimg.nyc3.digitaloceanspaces.com/Hero/buildings.svg"
+                    alt="icon" width="52" height="52" aria-hidden="true" />
+            </picture>
+            <h2 class="cs-title">Exterior Painting</h2>
+            <p class="cs-text">
+                Durable and beautiful exterior painting that protects and enhances curb appeal.
+            </p>
+        </li>
+        <li class="cs-item">
+            <picture class="cs-icon">
+                <img loading="lazy" decoding="async" src="https://csimg.nyc3.digitaloceanspaces.com/Hero/gear.svg"
+                    alt="icon" width="52" height="52" aria-hidden="true" />
+            </picture>
+            <h2 class="cs-title">Cabinet Refinishing</h2>
+            <p class="cs-text">
+                High-quality exterior painting designed to withstand the elements.
+            </p>
+        </li>
+        <li class="cs-item">
+            <picture class="cs-icon">
+                <img loading="lazy" decoding="async" src="https://csimg.nyc3.digitaloceanspaces.com/Hero/user.svg"
+                    alt="icon" width="52" height="52" aria-hidden="true" />
+            </picture>
+            <h2 class="cs-title">Deck Staining</h2>
+            <p class="cs-text">
+                Professional deck staining and power washing to restore your outdoor spaces.
+            </p>
+        </li>
+    </ul>
+</section>
+
+<!-- ============================================ -->
+<!--                   Gallery                    -->
+<!-- ============================================ -->
+
+<section id="gallery-43">
+    <div class="cs-container">
+        <div class="cs-content">
+            <span class="cs-topper">Our Work</span>
+            <h2 class="cs-title">
+                Projects That Speak for Themselves
+            </h2>
+            <p class="cs-text">
+                See our spectacular spaces, where every project serves as a testament to our unwavering commitment to excellence and high-quality design.
+            </p>
+        </div>
+        <div class="cs-image-group">
+            <a class="cs-item" href="/portfolio" data-lightbox="floorplans">
+                <picture class="cs-picture">
+                    <img alt="custom deck construction" height="346"
+                        src="https://lh3.googleusercontent.com/p/AF1QipOaCGhLdET9QnzcQRAWUK2MM-QP8C4PSEIPtbn-=s1360-w1360-h1020-rw"
+                        width="346" decoding="async" loading="lazy" />
+                </picture>
+                <div class="cs-hover-box">
+                    <picture class="cs-icon"><img alt="arrow" height="20" src="/assets/svgs/arrow-right.svg"
+                            width="20" /></picture>
+                    <h3 class="cs-h3">Interior Painting</h3>
+                    <p class="cs-hover-box-text">
+                        Transformative interior painting that breathes new life into your home.
+                    </p>
+                </div>
+            </a><a class="cs-item" href="/portfolio" data-lightbox="floorplans">
+                <picture class="cs-picture">
+                    <img alt="kitchen remodel project" height="346"
+                        src="https://lh3.googleusercontent.com/p/AF1QipNACp-ZhTb5gzTWu39ObDBt3-bYnnn1tg3oE-Jy=s1360-w1360-h1020-rw"
+                        width="346" decoding="async" loading="lazy" />
+                </picture>
+                <div class="cs-hover-box">
+                    <picture class="cs-icon"><img alt="arrow" height="20" src="/assets/svgs/arrow-right.svg"
+                            width="20" /></picture>
+                    <h3 class="cs-h3">Kitchen Remodel</h3>
+                    <p class="cs-hover-box-text">
+                        Durable and beautiful exterior painting that protects and enhances curb appeal.
+                    </p>
+                </div>
+            </a><a class="cs-item" href="/portfolio" data-lightbox="floorplans">
+                <picture class="cs-picture">
+                    <img alt="decking stairs construction" height="346"
+                        src="https://lh3.googleusercontent.com/p/AF1QipNopnzk-CaxwsFp75918KsjfMscJLuDXVA2gW74=s1360-w1360-h1020-rw"
+                        width="346" decoding="async" loading="lazy" />
+                </picture>
+                <div class="cs-hover-box">
+                    <picture class="cs-icon"><img alt="arrow" height="20" src="/assets/svgs/arrow-right.svg"
+                            width="20" /></picture>
+                    <h3 class="cs-h3">Deck Staining</h3>
+                    <p class="cs-hover-box-text">
+                        Professional deck staining to protect and enhance your outdoor living areas.
+                    </p>
+                </div>
+            </a><a class="cs-item" href="/portfolio" data-lightbox="floorplans">
+                <picture class="cs-picture">
+                    <img alt="brick patio design" height="346"
+                        src="https://lh3.googleusercontent.com/p/AF1QipM-kDM_mdeV0AajALUlGVF6lYd6l6UcF0ag2PLY=s1360-w1360-h1020-rw"
+                        width="346" decoding="async" loading="lazy" />
+                </picture>
+                <div class="cs-hover-box">
+                    <picture class="cs-icon"><img alt="arrow" height="20" src="/assets/svgs/arrow-right.svg"
+                            width="20" /></picture>
+                    <h3 class="cs-h3">Cabinet Refinishing</h3>
+                    <p class="cs-hover-box-text">
+                        Expert cabinet refinishing for a modern and updated look.
+                    </p>
+                </div>
+            </a><a class="cs-item" href="/portfolio" data-lightbox="floorplans">
+                <picture class="cs-picture">
+                    <img alt="bathroom remodel" height="346"
+                        src="https://lh3.googleusercontent.com/p/AF1QipO4Itajh_fQT-v-C7D2DjjymalzgvOpcuqH1bkf=s1360-w1360-h1020-rw"
+                        width="346" decoding="async" loading="lazy" />
+                </picture>
+                <div class="cs-hover-box">
+                    <picture class="cs-icon"><img alt="arrow" height="20" src="/assets/svgs/arrow-right.svg"
+                            width="20" /></picture>
+                    <h3 class="cs-h3">Exterior Painting</h3>
+                    <p class="cs-hover-box-text">
+                        High-quality exterior painting designed to withstand the elements.
+                    </p>
+                </div>
+            </a><a class="cs-item" href="/portfolio" data-lightbox="floorplans">
+                <picture class="cs-picture">
+                    <img alt="shower installation" height="346"
+                        src="https://lh3.googleusercontent.com/p/AF1QipOQRgL2viTr8NvQ8gtW7Et2nWBtFApE4LuH5uDO=s1360-w1360-h1020-rw"
+                        width="346" decoding="async" loading="lazy" />
+                </picture>
+                <div class="cs-hover-box">
+                    <picture class="cs-icon"><img alt="arrow" height="20" src="/assets/svgs/arrow-right.svg"
+                            width="20" /></picture>
+                    <h3 class="cs-h3">Commercial Painting</h3>
+                    <p class="cs-hover-box-text">
+                        Reliable commercial painting services to keep your business looking its best.
+                    </p>
+                </div>
+            </a>
+        </div>
+        <a class="cs-button-solid" href="/portfolio">View Full Gallery</a>
+    </div>
+</section>
+
+<!-- ============================================ -->
+<!--             Side By Side Reverse             -->
+<!-- ============================================ -->
+
+<section id="sbsr-2289">
+    <div class="cs-container">
+        <!-- Left Content Section-->
+        <div class="cs-content">
+            <span class="cs-topper">Featured Service</span>
+            <h2 class="cs-title">Exterior Painting & Custom Cabinets</h2>
+            <p class="cs-text">
+                At Tim's Professional Painting, Inc., we believe that your home is your most cherished asset. Our experienced painters provide dedicated work to ensure that your final product exceeds expectations.
+            </p>
+            <div class="cs-features">
+                <h3 class="cs-h3">Key Features:</h3>
+                <ul class="cs-ul">
+                    <li class="cs-li">Complete surface preparation and meticulous attention to detail</li>
+                    <li class="cs-li">Premium quality paints and professional techniques</li>
+                    <li class="cs-li">Unwavering commitment to quality and customer satisfaction</li>
+                </ul>
+            </div>
+            <a class="cs-button-solid" aria-label="get started" href="/contact/">Start Your Project</a>
+        </div>
+        <!-- Right Image Section -->
+        <div class="cs-image-group">
+            <!--Floating Box-->
+            <div class="cs-box">
+                <span class="cs-number">20+</span>
+                <div class="cs-flex">
+                    <h3 class="cs-heading">Years of Experience</h3>
+                    <span class="cs-desc">across the Chicagoland area</span>
+                </div>
+            </div>
+            <!--Image-->
+            <picture class="cs-picture">
+                <source media="(max-width: 600px)"
+                    srcset="https://lh3.googleusercontent.com/p/AF1QipPi_nzTx2Ucz5XHDik0V7rSRU-gsBM6p_M-HACC=s1360-w1360-h1020-rw">
+                <source media="(min-width: 601px)"
+                    srcset="https://lh3.googleusercontent.com/p/AF1QipPi_nzTx2Ucz5XHDik0V7rSRU-gsBM6p_M-HACC=s1360-w1360-h1020-rw">
+                <img loading="lazy" decoding="async"
+                    src="https://lh3.googleusercontent.com/p/AF1QipPi_nzTx2Ucz5XHDik0V7rSRU-gsBM6p_M-HACC=s1360-w1360-h1020-rw"
+                    alt="commercial and residential construction project" width="630" height="630" aria-hidden="true">
+            </picture>
+        </div>
+    </div>
+</section>
+
+
+<!-- ============================================ -->
+<!--                 Recommended                  -->
+<!-- ============================================ -->
+
+<section id="gallery-2297">
+    <div class="cs-container">
+        <div class="cs-content">
+            <div class="cs-flex">
+                <span class="cs-topper">Additional Services</span>
+                <h2 class="cs-title">More Ways We Can Help</h2>
+                <p class="cs-text">
+                    From detailed interior painting to full-scale exterior projects, Tim's Professional Painting, Inc. has the team to bring your vision to life.
+                </p>
+            </div>
+        </div>
+        <div class="cs-gallery-wrapper">
+            <div class="cs-gallery">
+                <a class="cs-image" href="#">
+                    <picture class="cs-picture">
+                        <img alt="commercial construction" height="400"
+                            src="https://lh3.googleusercontent.com/p/AF1QipP7dygXULlgO513EYi05Ep_zyWuSNOELFWmCbtY=s1360-w1360-h1020-rw"
+                            width="305" decoding="async" loading="lazy" />
+                    </picture>
+                    <div class="cs-info">
+                        <span class="cs-project">Cabinet Refinishing</span>
+                        <span class="cs-tag">West Chicago, IL</span>
+                    </div>
+                </a><a class="cs-image" href="#">
+                    <picture class="cs-picture">
+                        <img alt="residential construction" height="400"
+                            src="https://lh3.googleusercontent.com/p/AF1QipNo_iiwRCiBPX3mZ9YlC-8GV2cVnZAqrSpXaBF9=s1360-w1360-h1020-rw"
+                            width="305" decoding="async" loading="lazy" />
+                    </picture>
+                    <div class="cs-info">
+                        <span class="cs-project">Deck Staining</span>
+                        <span class="cs-tag">West Chicago, IL</span>
+                    </div>
+                </a><a class="cs-image" href="#">
+                    <picture class="cs-picture">
+                        <img alt="construction management" height="400"
+                            src="https://lh3.googleusercontent.com/p/AF1QipMI3RN_A_krWs6HQNAmcweA03hnSMZsVO2oLnmO=s1360-w1360-h1020-rw"
+                            width="305" decoding="async" loading="lazy" />
+                    </picture>
+                    <div class="cs-info">
+                        <span class="cs-project">Power Washing</span>
+                        <span class="cs-tag">West Chicago, IL</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="cs-stats">
+        <div class="cs-stat">
+            <span class="cs-number">100%</span>
+            <span class="cs-desc">Satisfaction</span>
+        </div>
+        <div class="cs-stat">
+            <span class="cs-number">Top Quality</span>
+            <span class="cs-desc">Craftsmanship</span>
+        </div>
+        <div class="cs-stat">
+            <span class="cs-number">Expert</span>
+            <span class="cs-desc">Painters</span>
+        </div>
+        <div class="cs-stat">
+            <span class="cs-number">5★</span>
+            <span class="cs-desc">Reviews</span>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================ -->
+<!--                  Side By Side                -->
+<!-- ============================================ -->
+
+<section id="sbs-2295">
+    <div class="cs-container">
+        <div class="cs-image-group">
+            <!--Main Image-->
+            <div class="cs-picture-wrapper1">
+                <picture class="cs-picture cs-picture1">
+                    <!--Mobile Image-->
+                    <source media="(max-width: 600px)"
+                        srcset="https://lh3.googleusercontent.com/p/AF1QipP6Z-aPuRdGsmREkAZISkaJMyJd1EpgnHDZ5Kd4=s1360-w1360-h1020-rw">
+                    <!--Tablet and above Image-->
+                    <source media="(min-width: 601px)"
+                        srcset="https://lh3.googleusercontent.com/p/AF1QipP6Z-aPuRdGsmREkAZISkaJMyJd1EpgnHDZ5Kd4=s1360-w1360-h1020-rw">
+                    <img loading="lazy" decoding="async"
+                        src="https://lh3.googleusercontent.com/p/AF1QipP6Z-aPuRdGsmREkAZISkaJMyJd1EpgnHDZ5Kd4=s1360-w1360-h1020-rw"
+                        alt="before construction project" width="272" height="337">
+                </picture>
+                <span class="cs-tag">Before</span>
+            </div>
+            <!--Small Image-->
+            <div class="cs-picture-wrapper2">
+                <picture class="cs-picture cs-picture2">
+                    <!--Mobile Image-->
+                    <source media="(max-width: 600px)"
+                        srcset="https://lh3.googleusercontent.com/p/AF1QipN11_4lgGJkHrZ0BiaWbbnDchxXAAQ4Jqxe2sfX=s1360-w1360-h1020-rw">
+                    <!--Tablet and above Image-->
+                    <source media="(min-width: 601px)"
+                        srcset="https://lh3.googleusercontent.com/p/AF1QipN11_4lgGJkHrZ0BiaWbbnDchxXAAQ4Jqxe2sfX=s1360-w1360-h1020-rw">
+                    <img loading="lazy" decoding="async"
+                        src="https://lh3.googleusercontent.com/p/AF1QipN11_4lgGJkHrZ0BiaWbbnDchxXAAQ4Jqxe2sfX=s1360-w1360-h1020-rw"
+                        alt="after construction project" width="243" height="367">
+                </picture>
+                <span class="cs-tag">After</span>
+            </div>
+            <img class="cs-arrow" loading="lazy" decoding="async"
+                src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/before-after-arrow.svg" alt="arrow"
+                width="148" height="54">
+        </div>
+        <div class="cs-content">
+            <span class="cs-topper">Featured Service</span>
+            <h2 class="cs-title">Professional Painting</h2>
+            <p class="cs-text">
+                From preparation to the final coat, we handle the hard work of painting so you can enjoy a smooth, stress-free process and a stunning final result.
+            </p>
+            <h3 class="cs-h3">Our Process</h3>
+            <ul class="cs-ul">
+                <li class="cs-li">
+                    <strong>Dream it</strong>: Work with our team to choose the perfect colors for your home.
+                </li>
+                <li class="cs-li">
+                    <strong>Plan it</strong>: We handle the prep work, including drywall repair and protecting your belongings.
+                </li>
+                <li class="cs-li">
+                    <strong>Paint it</strong>: Our incredible team of painters delivers the highest quality finish in the market.
+                </li>
+                <li class="cs-li">
+                    <strong>Enjoy it</strong>: Experience a seamless painting process that revitalizes your space.
+                </li>
+            </ul>
+            <a href="/contact/" class="cs-button-solid">Start Your Project</a>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}

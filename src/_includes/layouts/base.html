@@ -1,0 +1,215 @@
+<!-- A fully fleshed-out <head>, dynamically changing based on client.json and the page front matter -->
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Standard meta tags -->
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="{{ description }}" />
+    <meta name="keywords" content="" />
+    <link rel="canonical" href="{{ client.domain }}{{ page.url }}" />
+
+    <!--Social Media Display-->
+    <meta property="og:title" content="{{ title }}" />
+    <meta property="og:description" content="{{ description }}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="{{ client.domain }}{{ page.url }}" />
+    <meta property="og:image" content="/assets/images/logo-small.png" />
+    <meta property="og:image:secure_url" content="/assets/images/logo-small.png" />
+
+    <!--Favicons-->
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png?v1" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png" />
+    <link rel="manifest" href="/assets/favicons/site.webmanifest" />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="theme-color" content="#ffffff" />
+
+    <!-- Preloads -->
+    <link rel="preload" as="image" href="/assets/svgs/logo-white.svg" />
+    <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/maven-pro-v39-latin-regular.woff2"
+        crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/maven-pro-v39-latin-700.woff2" crossorigin />
+
+    <!-- Preload an image - tag not rendered if preloadImg is blank to stop console errors -->
+    {% if preloadImg != '' %}
+    <link rel="preload" as="image" href="{{ preloadImg }}" />
+    {% endif %}
+
+    <!-- Sitewide Stylesheets and Scripts -->
+    <link rel="stylesheet" href="/assets/css/root.css" />
+    <link rel="stylesheet" href="/assets/css/dark.css" />
+    <script defer src="/assets/js/dark.js"></script>
+    <script defer src="/assets/js/nav.js"></script>
+
+    <style>
+        #redesign-popup-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.55);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            z-index: 99999;
+            align-items: center;
+            justify-content: center;
+            animation: popupFadeIn 0.3s ease;
+        }
+
+        #redesign-popup-overlay.active {
+            display: flex;
+        }
+
+        @keyframes popupFadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        #redesign-popup-box {
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 520px;
+            width: calc(100% - 2rem);
+            padding: 2.5rem 2rem 2rem;
+            text-align: center;
+            position: relative;
+            animation: popupSlideUp 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        @keyframes popupSlideUp {
+            from {
+                transform: translateY(30px) scale(0.95);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+        }
+
+        #redesign-popup-box .popup-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        #redesign-popup-box h2 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #111;
+            margin: 0 0 1rem;
+            line-height: 1.4;
+        }
+
+        #redesign-popup-box p {
+            font-size: 0.95rem;
+            color: #444;
+            line-height: 1.7;
+            margin: 0 0 1.5rem;
+        }
+
+        #redesign-popup-box p a {
+            color: inherit;
+            font-weight: 600;
+            text-decoration: underline;
+        }
+
+        #redesign-popup-close {
+            display: inline-block;
+            padding: 0.65rem 1.75rem;
+            background: #111;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s ease, transform 0.15s ease;
+        }
+
+        #redesign-popup-close:hover {
+            background: #333;
+            transform: scale(1.03);
+        }
+    </style>
+
+    {% block head %}{% endblock %}
+
+    <title>{{ title }}</title>
+</head>
+
+<body>
+    <!--Screen reader skip main nav-->
+    <a class="skip" aria-label="skip to main content" href="#main" tabindex="1">Click To Skip To Main Content</a>
+
+    {% include "components/header.html" %}
+    <main id="main">{% block body %}{% endblock %}</main>
+    {% include "components/footer.html" %}
+
+    <!-- Non-homepage redesign popup -->
+    <div id="redesign-popup-overlay" role="dialog" aria-modal="true" aria-labelledby="redesign-popup-title">
+        <div id="redesign-popup-box">
+            <div class="popup-icon">✨</div>
+            <h2 id="redesign-popup-title">You&rsquo;re viewing a redesigned homepage!</h2>
+            <p>
+                This is a redesigned version of your homepage. If you like how it looks, I can build the rest of your website for $99/mo.
+            </p>
+            <button id="redesign-popup-close">Got it!</button>
+        </div>
+    </div>
+
+    <script>
+        (function () {
+            var overlay = document.getElementById('redesign-popup-overlay');
+            var closeBtn = document.getElementById('redesign-popup-close');
+
+            function showPopup() {
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function hidePopup() {
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+
+            closeBtn.addEventListener('click', hidePopup);
+            overlay.addEventListener('click', function (e) {
+                if (e.target === overlay) hidePopup();
+            });
+
+            // Intercept every link click on the page
+            document.addEventListener('click', function (e) {
+                var anchor = e.target.closest('a');
+                if (!anchor) return;
+
+                var href = anchor.getAttribute('href');
+                if (!href) return;
+
+                // Skip external links, mailto, tel, hash-only, and the homepage itself
+                var isExternal = /^https?:\/\//i.test(href);
+                var isMailOrTel = /^(mailto|tel):/i.test(href);
+                var isHashOnly = /^#/.test(href);
+                var isHomepage = href === '/' || href === '/index.html';
+
+                if (isExternal || isMailOrTel || isHashOnly || isHomepage) return;
+
+                // It's an internal non-homepage link — block navigation and show popup
+                e.preventDefault();
+                e.stopPropagation();
+                showPopup();
+            }, true); // useCapture so we catch it before other handlers
+        })();
+    </script>
+</body>
+
+</html>

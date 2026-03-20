@@ -1,0 +1,138 @@
+---
+title: "About | HomeWorks - Home Remodeling Fremont, CA"
+description: "Learn about HomeWorks, Fremont's premier home remodeling company. Expert kitchen, bathroom, and whole home renovations with over 15 years of experience."
+preloadImg: "/assets/images/cabinets2.jpg"
+permalink: "about/"
+eleventyNavigation:
+    key: About Us
+    order: 200
+---
+
+{% extends "layouts/base.html" %}
+
+{% block head %}
+    <link rel="stylesheet" href="/assets/css/about.css" />
+{% endblock %}
+
+{% block body %}
+    <!-- ============================================ -->
+    <!--                    LANDING                   -->
+    <!-- ============================================ -->
+
+    <section id="int-hero">
+        <h1 id="home-h">About Us</h1>
+        <picture>
+            <source
+                media="(max-width: 600px)"
+                srcset="/assets/images/banner-sm.webp"
+            />
+            <source
+                media="(min-width: 601px)"
+                srcset="/assets/images/banner.webp"
+            />
+            <img
+                aria-hidden="true"
+                decoding="async"
+                src="/assets/images/banner.webp"
+                alt="HomeWorks remodeling team"
+                loading="eager"
+                width="2500"
+                height="1667"
+            />
+        </picture>
+    </section>
+
+    <!-- ============================================ -->
+    <!--            Side By Side Reverse              -->
+    <!-- ============================================ -->
+
+    <section id="sbs-r-869">
+        <div class="cs-container">
+            <div class="cs-image-group">
+                <!--Right Image-->
+                <picture class="cs-right-img">
+                    <!--Mobile Image-->
+                    <source
+                        media="(max-width: 600px)"
+                        srcset="
+                            https://csimg.nyc3.cdn.digitaloceanspaces.com/Images%2FPeople%2Ftherapy.jpg
+                        "
+                    />
+                    <!--Tablet and above Image-->
+                    <source
+                        media="(min-width: 601px)"
+                        srcset="
+                            https://csimg.nyc3.cdn.digitaloceanspaces.com/Images%2FPeople%2Ftherapy.jpg
+                        "
+                    />
+                    <img
+                        loading="lazy"
+                        decoding="async"
+                        src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images%2FPeople%2Ftherapy.jpg"
+                        alt="home remodeling team"
+                        width="439"
+                        height="560"
+                    />
+                </picture>
+                <!--Left Image-->
+                <picture class="cs-left-img">
+                    <!--Mobile Image-->
+                    <source
+                        media="(max-width: 600px)"
+                        srcset="
+                            https://csimg.nyc3.cdn.digitaloceanspaces.com/Images%2FPeople%2Ftherapy6.jpg
+                        "
+                    />
+                    <!--Tablet and above Image-->
+                    <source
+                        media="(min-width: 601px)"
+                        srcset="
+                            https://csimg.nyc3.cdn.digitaloceanspaces.com/Images%2FPeople%2Ftherapy6.jpg
+                        "
+                    />
+                    <img
+                        loading="lazy"
+                        decoding="async"
+                        src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images%2FPeople%2Ftherapy6.jpg"
+                        alt="home remodeling consultation"
+                        width="439"
+                        height="560"
+                    />
+                </picture>
+            </div>
+            <div class="cs-content">
+                <span class="cs-topper">Our Story</span>
+                <h2 class="cs-title">
+                    Transforming Homes in Fremont Since 2008
+                </h2>
+                <p class="cs-text">
+                    HomeWorks has been Fremont's trusted home remodeling partner
+                    for over 15 years. Founded by local contractors who
+                    understand the unique character of Bay Area homes, we
+                    specialize in creating beautiful, functional spaces that
+                    reflect your lifestyle and increase your home's value. Our
+                    commitment to quality craftsmanship, transparent
+                    communication, and customer satisfaction has made us the
+                    go-to choice for homeowners throughout Fremont and the
+                    surrounding communities.
+                </p>
+                <ul class="cs-ul">
+                    <li class="cs-li">Licensed & Insured Contractors</li>
+                    <li class="cs-li">15+ Years of Local Experience</li>
+                    <li class="cs-li">Kitchen & Bathroom Specialists</li>
+                    <li class="cs-li">Whole Home Renovations</li>
+                    <li class="cs-li">Custom Design Services</li>
+                    <li class="cs-li">Energy-Efficient Upgrades</li>
+                    <li class="cs-li">Free Consultations & Estimates</li>
+                    <li class="cs-li">Warranty on All Work</li>
+                    <li class="cs-li">Local Material Suppliers</li>
+                    <li class="cs-li">Transparent Pricing</li>
+                </ul>
+                <a href="/contact/" class="cs-button-solid"
+                    >Get Your Free Estimate</a
+                >
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
